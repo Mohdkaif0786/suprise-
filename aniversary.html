@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Anniversary Surprise</title><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#141e30,#243b55);
+  overflow:hidden;
+  color:#fff;
+}
+
+.screen{
+  position:absolute;
+  width:100%;height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+}
+
+#intro{
+  font-size:2.2rem;
+  animation:introAnim 4s ease forwards;
+}
+
+@keyframes introAnim{
+  0%{opacity:0;transform:scale(0.7)}
+  50%{opacity:1;transform:scale(1.1)}
+  100%{opacity:0;transform:scale(1.4)}
+}
+
+#main{display:none}
+
+.card{
+  background:rgba(255,255,255,0.08);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 30px rgba(0,0,0,0.4);
+  animation:fadeUp 1s ease;
+  max-width:340px;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.names{
+  margin-bottom:15px;
+  color:#ffd166;
+}
+
+#typing{
+  min-height:60px;
+  font-size:0.95rem;
+}
+
+button{
+  margin-top:20px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{transform:scale(1.1)}
+
+.hidden{display:none}
+
+.message{
+  margin-top:20px;
+  line-height:1.6;
+  animation:fadeUp 1.5s ease;
+}
+
+/* hearts */
+.heart{
+  position:absolute;
+  width:15px;height:15px;
+  background:#ff4d6d;
+  transform:rotate(45deg);
+  animation:float 5s linear infinite;
+}
+.heart:before,.heart:after{
+  content:'';position:absolute;
+  width:15px;height:15px;
+  background:#ff4d6d;border-radius:50%;
+}
+.heart:before{top:-7px}
+.heart:after{left:-7px}
+
+@keyframes float{
+  from{transform:translateY(100vh) rotate(45deg)}
+  to{transform:translateY(-10vh) rotate(45deg)}
+}
+
+/* confetti */
+.confetti{
+  position:absolute;
+  width:6px;height:6px;
+  background:yellow;
+  animation:confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall{
+  from{transform:translateY(-10vh)}
+  to{transform:translateY(100vh);opacity:0}
+}
+
+</style></head><body><div id="intro" class="screen">✨ A Special Love Story ✨</div><div id="main" class="screen">
+  <div class="card">
+    <h1>Happy Anniversary 🎉</h1>
+    <div class="names">Dinesh Kumar Sir ❤️ Ruby Saxena Mam</div><div id="typing"></div>
+
+<button onclick="showSurprise()">Open Surprise 🎁</button>
+
+<div id="surprise" class="hidden message">
+  <p>🌹 Aaj ka din ek khoobsurat rishton ka jashn hai</p>
+  <p>🤲 Dua hai aap dono hamesha ek dusre ka sahara bane rahein</p>
+  <p>💖 Mohabbat kabhi kam na ho, khushiyan kabhi ruk na jayein</p>
+  <p>✨ Har saal aur zyada khoobsurat ho aapka safar</p>
+  <h3>- Mohd Kaif</h3>
+</div>
+
+  </div>
+</div><script>
+// safe init
+document.addEventListener("DOMContentLoaded", function(){
+
+  // show main
+  setTimeout(()=>{
+    document.getElementById("main").style.display="flex";
+  },4000);
+
+  // typing effect
+  const text="Kuch rishte waqt ke saath purane nahi hote... balki aur gehre ho jaate hain 💫";
+  let i=0;
+  function type(){
+    if(i<text.length){
+      document.getElementById("typing").innerHTML+=text.charAt(i);
+      i++;
+      setTimeout(type,35);
+    }
+  }
+  setTimeout(type,4200);
+
+  // hearts continuous
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },300);
+
+});
+
+// surprise function (stable)
+function showSurprise(){
+  const el=document.getElementById("surprise");
+  el.classList.remove("hidden");
+  launchConfetti();
+}
+
+// confetti
+function launchConfetti(){
+  for(let i=0;i<40;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+</script></body>
+</html>
