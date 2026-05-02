@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Ruby Ma'am 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  overflow:hidden;
+}.container{ text-align:center; color:#fff; }
+
+h1{ font-size:3rem; animation:slideDown 1.5s ease forwards; }
+
+p{ margin-top:20px; font-size:1.2rem; min-height:80px; }
+
+button{ margin-top:30px; padding:12px 25px; border:none; border-radius:25px; background:#fff; color:#ff4b2b; font-weight:bold; cursor:pointer; transition:0.3s; }
+
+button:hover{ transform:scale(1.1); }
+
+@keyframes slideDown{ from{opacity:0;transform:translateY(-50px);} to{opacity:1;transform:translateY(0);} }
+
+/* Floating hearts */ .heart{ position:absolute; bottom:-20px; font-size:20px; animation:floatUp 6s linear infinite; }
+
+@keyframes floatUp{ 0%{transform:translateY(0) scale(1);opacity:1;} 100%{transform:translateY(-100vh) scale(1.5);opacity:0;} }
+
+</style>
+</head>
+<body><div class="container">
+  <h1>🎂 Happy Birthday Ruby Ma'am 🎉</h1>
+  <p id="msg">Click below for a surprise 💖</p>
+  <button id="btn">Open Surprise</button>
+</div><script>
+
+// Fix: proper event listener
+const btn = document.getElementById('btn');
+btn.addEventListener('click', showSurprise);
+
+function showSurprise(){
+  const text = "Thoda late ho gaya, lekin meri dua hamesha aapke saath hai 🤲💖\n\nAllah aapko hamesha sehat, khushi aur kamyabi ata farmaaye ✨\nAapki zindagi me hamesha barkat rahe aur har din khushiyon se bhara ho 🌸\n\nAap hamesha muskurati rahein, yehi meri dil se dua hai ❤️";
+
+  let i = 0;
+  const msgEl = document.getElementById('msg');
+  msgEl.innerHTML = "";
+
+  function typeWriter(){
+    if(i < text.length){
+      msgEl.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 40);
+    }
+  }
+
+  typeWriter();
+}
+
+// Floating hearts animation (no canvas)
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerHTML = '💖';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.fontSize = (Math.random()*20 + 15) + 'px';
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+}
+
+setInterval(createHeart, 300);
+
+</script></body>
+</html>
