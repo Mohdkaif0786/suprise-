@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Dinesh Sir</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    height:100vh;
+    background:black;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.bg{
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,#ff0080 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#00d9ff 0%,transparent 30%),
+    radial-gradient(circle at center,#220044 0%,#000 70%);
+
+    animation:bgMove 8s infinite alternate;
+}
+
+@keyframes bgMove{
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+}
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloons{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:50;
+}
+
+.balloon{
+
+    position:absolute;
+
+    bottom:-250px;
+
+    width:120px;
+    height:150px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:12px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:13px;
+    font-weight:700;
+    line-height:1.4;
+
+    text-shadow:0 0 10px rgba(0,0,0,.8);
+
+    opacity:.75;
+
+    backdrop-filter:blur(4px);
+
+    border:2px solid rgba(255,255,255,.4);
+
+    box-shadow:0 0 20px rgba(255,255,255,.4);
+
+    animation:floatUp linear infinite;
+}
+
+.balloon span{
+    z-index:2;
+}
+
+/* Balloon Knot */
+
+.balloon::before{
+    content:'';
+
+    position:absolute;
+
+    bottom:-12px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:18px;
+    height:18px;
+
+    background:inherit;
+
+    clip-path:polygon(50% 100%,0 0,100% 0);
+}
+
+/* Balloon Thread */
+
+.balloon::after{
+
+    content:'';
+
+    position:absolute;
+
+    left:50%;
+
+    top:150px;
+
+    width:2px;
+    height:100px;
+
+    background:rgba(255,255,255,.6);
+
+    transform:translateX(-50%);
+}
+
+/* Balloon Colors */
+
+.b1{
+    left:5%;
+    background:rgba(255,0,76,.6);
+    animation-duration:11s;
+}
+
+.b2{
+    left:20%;
+    background:rgba(0,217,255,.6);
+    animation-duration:13s;
+}
+
+.b3{
+    right:20%;
+    background:rgba(255,230,0,.6);
+    animation-duration:14s;
+}
+
+.b4{
+    right:5%;
+    background:rgba(0,255,127,.6);
+    animation-duration:15s;
+}
+
+.b5{
+    left:35%;
+    background:rgba(255,123,0,.6);
+    animation-duration:12s;
+}
+
+.b6{
+    right:35%;
+    background:rgba(157,0,255,.6);
+    animation-duration:16s;
+}
+
+/* Balloon Animation */
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.8;
+    }
+
+    50%{
+        transform:translateY(-50vh) rotate(8deg);
+    }
+
+    100%{
+        transform:translateY(-130vh) rotate(-8deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   SURPRISE SCREEN
+========================= */
+
+.surprise{
+
+    position:fixed;
+
+    inset:0;
+
+    background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    z-index:999;
+
+    transition:1s;
+}
+
+.surprise.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* Surprise Image */
+
+.surprise-img{
+
+    width:300px;
+    height:300px;
+
+    border-radius:25px;
+
+    background-image:url('./dinesh.png');
+    background-size:cover;
+    background-position:center;
+
+    border:8px solid white;
+
+    box-shadow:
+    0 0 30px #ff00aa,
+    0 0 60px #00d9ff,
+    0 0 90px #ffe600;
+
+    animation:photoGlow 2s infinite alternate;
+}
+
+@keyframes photoGlow{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.04);
+    }
+}
+
+/* Surprise Text */
+
+.surprise h1{
+
+    margin-top:25px;
+
+    font-size:clamp(35px,8vw,80px);
+
+    text-align:center;
+
+    font-weight:900;
+
+    background:linear-gradient(90deg,#fff,#ff00aa,#00d9ff,#ffe600);
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:titleMove 5s linear infinite;
+}
+
+.surprise p{
+
+    margin-top:15px;
+
+    color:#ddd;
+
+    text-align:center;
+
+    font-size:clamp(15px,3vw,24px);
+}
+
+@keyframes titleMove{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+}
+
+/* Button */
+
+.enter-btn{
+
+    margin-top:35px;
+
+    padding:16px 40px;
+
+    border:none;
+
+    border-radius:60px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    background:linear-gradient(45deg,#ff0080,#ffcc00,#00d9ff);
+
+    background-size:300%;
+
+    animation:btnAnim 4s linear infinite;
+
+    box-shadow:0 0 30px rgba(255,255,255,.4);
+
+    transition:.4s;
+}
+
+.enter-btn:hover{
+    transform:scale(1.08);
+}
+
+@keyframes btnAnim{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.main{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.card{
+
+    width:min(92%,850px);
+
+    padding:35px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    backdrop-filter:blur(14px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    color:white;
+
+    box-shadow:0 0 40px rgba(255,255,255,.2);
+
+    animation:cardGlow 4s infinite alternate;
+}
+
+@keyframes cardGlow{
+
+    from{
+        box-shadow:0 0 20px #ff00aa;
+    }
+
+    to{
+        box-shadow:0 0 60px #00d9ff;
+    }
+}
+
+/* Main Photo */
+
+.main-photo{
+
+    width:300px;
+    height:380px;
+
+    margin:auto;
+
+    border-radius:25px;
+
+    background-image:url('./dinesh.png');
+    background-size:cover;
+    background-position:center;
+
+    border:8px solid white;
+
+    box-shadow:
+    0 0 30px #ff00aa,
+    0 0 60px #00d9ff,
+    0 0 90px #ffe600;
+
+    animation:mainGlow 3s infinite alternate;
+}
+
+@keyframes mainGlow{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.03);
+    }
+}
+
+/* Title */
+
+.title{
+
+    margin-top:20px;
+
+    font-size:clamp(28px,6vw,60px);
+
+    font-weight:900;
+
+    background:linear-gradient(90deg,#fff,#ff00aa,#00d9ff,#ffe600);
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:titleMove 5s linear infinite;
+}
+
+/* Message */
+
+.message{
+
+    margin-top:25px;
+
+    font-size:clamp(15px,2vw,23px);
+
+    line-height:1.8;
+
+    color:#eee;
+}
+
+/* Dua */
+
+.dua{
+
+    margin-top:20px;
+
+    font-size:clamp(16px,2vw,24px);
+
+    color:#00ffcc;
+
+    font-weight:700;
+
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+    }
+}
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart{
+    position:absolute;
+    color:#ff4d6d;
+    animation:heartFloat linear forwards;
+}
+
+@keyframes heartFloat{
+
+    0%{
+        transform:translateY(0) scale(.5);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) scale(1.4);
+        opacity:0;
+    }
+}
+
+/* =========================
+   FIREWORKS
+========================= */
+
+.firework{
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+
+    from{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    to{
+        transform:scale(25);
+        opacity:0;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .surprise-img{
+        width:220px;
+        height:220px;
+    }
+
+    .main-photo{
+        width:220px;
+        height:300px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .enter-btn{
+        width:90%;
+    }
+
+    .balloon{
+        width:75px;
+        height:95px;
+        font-size:9px;
+    }
+
+    .balloon::after{
+        top:95px;
+        height:70px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background -->
+
+<div class="bg"></div>
+
+<!-- =========================
+     BALLOONS
+========================= -->
+
+<div class="balloons">
+
+    <div class="balloon b1">
+        <span>
+            🎂<br>
+            Happy Birthday<br>
+            Dinesh Sir
+        </span>
+    </div>
+
+    <div class="balloon b2">
+        <span>
+            🎉<br>
+            Happy Birthday<br>
+            Dinesh Sir
+        </span>
+    </div>
+
+    <div class="balloon b3">
+        <span>
+            ✨<br>
+            Happy Birthday<br>
+            Dinesh Sir
+        </span>
+    </div>
+
+    <div class="balloon b4">
+        <span>
+            🎂<br>
+            Dinesh Sir<br>
+            Birthday
+        </span>
+    </div>
+
+    <div class="balloon b5">
+        <span>
+            🥳<br>
+            Happy Birthday<br>
+            Dinesh Sir
+        </span>
+    </div>
+
+    <div class="balloon b6">
+        <span>
+            🎉<br>
+            Happy Birthday<br>
+            Dinesh Sir
+        </span>
+    </div>
+
+</div>
+
+<!-- =========================
+     SURPRISE SCREEN
+========================= -->
+
+<div class="surprise" id="surprise">
+
+    <div class="surprise-img"></div>
+
+    <h1>🎂 SPECIAL SURPRISE 🎂</h1>
+
+    <p>
+        For The Legendary Dinesh Sir ✨
+    </p>
+
+    <button class="enter-btn" onclick="openSurprise()">
+        🎉 Open Surprise 🎉
+    </button>
+
+</div>
+
+<!-- =========================
+     MAIN CARD
+========================= -->
+
+<div class="main">
+
+    <div class="card">
+
+        <div class="main-photo"></div>
+
+        <div class="title">
+            Happy Birthday <br>
+            Dinesh Sir
+        </div>
+
+        <div class="message">
+
+            Sir, aap sirf ek insaan nahi...
+            ek inspiration ho ✨ <br><br>
+
+            Aapki life hamesha success,
+            happiness aur positivity se bhari rahe ❤️
+
+        </div>
+
+        <div class="dua">
+
+            🤲 Allah aapko sehat,
+            lambi umar aur endless happiness de ✨
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================
+   OPEN SURPRISE
+========================= */
+
+function openSurprise(){
+
+    document
+    .getElementById("surprise")
+    .classList.add("hide");
+
+    celebrate();
+}
+
+/* =========================
+   HEARTS
+========================= */
+
+function createHeart(){
+
+    let heart=document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=
+    (Math.random()*20+15)+"px";
+
+    heart.style.animationDuration=
+    (Math.random()*4+4)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },7000);
+}
+
+setInterval(createHeart,800);
+
+/* =========================
+   FIREWORKS
+========================= */
+
+function celebrate(){
+
+    for(let i=0;i<25;i++){
+
+        setTimeout(()=>{
+
+            let firework=
+            document.createElement("div");
+
+            firework.classList.add("firework");
+
+            firework.style.left=
+            Math.random()*100+"vw";
+
+            firework.style.top=
+            Math.random()*100+"vh";
+
+            firework.style.background=
+            `hsl(${Math.random()*360},100%,60%)`;
+
+            document.body.appendChild(firework);
+
+            setTimeout(()=>{
+                firework.remove();
+            },1000);
+
+        },i*100);
+    }
+}
+
+</script>
+
+</body>
+</html>
